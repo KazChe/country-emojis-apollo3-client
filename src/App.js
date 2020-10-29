@@ -3,8 +3,8 @@ import './App.css';
 import { useQuery, gql } from '@apollo/client';
 
 const COUNTRY = gql`
-  {
-    country(code: "DE") {
+  query Country($code: ID!) {
+    country(code: $code) {
       name
       emoji
     }
@@ -12,11 +12,13 @@ const COUNTRY = gql`
 `;
 
 function App() {
-  const {data, loading, error } = useQuery(COUNTRY)
+  const {data, loading, error } = useQuery(COUNTRY, {
+    variables: {code: "CH"},
+  })
 
   return (
     <div className="App">
-      {error && <h1>{`You broke it ${error.message}`}</h1>}
+      {error  && (<h1>{`You broke it ${error.message}`}</h1>)}
       {loading ? (<h1>Loading...</h1>) : (<h1>{data.country.name} {data.country.emoji}</h1>)}
     </div>
   );
