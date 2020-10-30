@@ -7,7 +7,21 @@ import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 
 const client = new ApolloClient({
     uri: "https://countries.trevorblades.com/",
-    cache: new InMemoryCache()
+    cache: new InMemoryCache({
+        typePolicies: {
+            Query: {
+                fields: {
+                    nameWithEmoji: {
+                        read: (_, {readField}) => {
+                          const name = readField("name")
+                          const emoji = readField("emoji")
+                        }
+                    }
+
+                }
+            }
+        }
+    })
 })
 ReactDOM.render(
   <React.StrictMode>

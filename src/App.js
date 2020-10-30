@@ -13,7 +13,7 @@ const COUNTRY = gql`
 
 function App() {
   const {data, loading, error } = useQuery(COUNTRY, {
-    variables: {code: "CH"},
+    variables: {code},
   })
 
   return (
