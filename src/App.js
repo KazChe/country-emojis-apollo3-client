@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { useQuery, gql } from '@apollo/client';
 import { useState } from  "react"
@@ -16,7 +15,7 @@ function App() {
   const [ code, setCode] = useState("")
   const {data, loading, error } = useQuery(COUNTRY, {
     variables: { code },
-    skip: code.length != 2
+    skip: code.length !== 2
   })
 
   const handleChange = (e) => {
@@ -25,7 +24,8 @@ function App() {
   return (
     <div className="App">
       {error  && (<h1>{`You broke it ${error.message}`}</h1>)}
-      {!data || loading ? (<h1>Loading...</h1>) : (<h1>{data.country.name} {data.country.emoji}</h1>)}
+      {!data || loading ? (<h1>Loading...</h1>) :
+          (<h1>{data.country?.name} {data.country?.emoji}</h1>)}
       <input type="text" value={code} onChange={handleChange}/>
     </div>
   );

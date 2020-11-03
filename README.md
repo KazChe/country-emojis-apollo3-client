@@ -1,4 +1,4 @@
-# React app, using apollo3 client, given a country code get names and flag emoji
+# React app, using apollo3 client, given a country code get name and flag emoji
 
 To explore cache policies, reactive variables ...
 
