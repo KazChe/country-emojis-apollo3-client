@@ -10,6 +10,7 @@ const client = new ApolloClient({
     cache: new InMemoryCache({
         typePolicies: {
             Country: {
+                keyFields: ['code'],
                 fields: {
                     nameWithEmoji: {
                         read: (_, {readField}) => {
