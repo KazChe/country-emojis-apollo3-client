@@ -9,12 +9,13 @@ const client = new ApolloClient({
     uri: "https://countries.trevorblades.com/",
     cache: new InMemoryCache({
         typePolicies: {
-            Query: {
+            Country: {
                 fields: {
                     nameWithEmoji: {
                         read: (_, {readField}) => {
-                          const name = readField("name")
-                          const emoji = readField("emoji")
+                          const  name = readField("name")
+                          const  emoji = readField("emoji")
+                          return `${name} ${emoji}`
                         }
                     }
 

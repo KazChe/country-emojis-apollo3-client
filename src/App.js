@@ -7,6 +7,7 @@ const COUNTRY = gql`
     country( code: $code ) {
       name
       emoji
+      nameWithEmoji @client
     }
   }
 `;
@@ -25,7 +26,8 @@ function App() {
     <div className="App">
       {error  && (<h1>{`You broke it ${error.message}`}</h1>)}
       {!data || loading ? (<h1>Loading...</h1>) :
-          (<h1>{data.country?.name} {data.country?.emoji}</h1>)}
+          // (<h1>{data.country?.name} {data.country?.emoji}</h1>)}
+          (<h1>{data.country?.nameWithEmoji}</h1>)}
       <input type="text" value={code} onChange={handleChange}/>
     </div>
   );
