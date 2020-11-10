@@ -41,7 +41,7 @@ function App() {
             {!data || loading ? (<h1>Loading...</h1>) : (
                 <>
                     <ul>
-                        {data.countries.map(country => (<li><h2>{country.nameWithEmoji}</h2></li>))}
+                        {data.countries.map(country => (<li key={country.code}><h2>{country.nameWithEmoji}</h2></li>))}
                     </ul>
                 </>
             )}
