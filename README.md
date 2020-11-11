@@ -26,3 +26,8 @@ const client = new ApolloClient({
    );
 ```
 
+Using devtools built-in feature for Apollo client one can using for example chrome devtools issue:
+
+```
+__Apollo_CLIENT__.cache.evict.....
+```
