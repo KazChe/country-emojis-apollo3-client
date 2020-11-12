@@ -9,6 +9,16 @@ const client = new ApolloClient({
     uri: "https://countries.trevorblades.com/",
     cache: new InMemoryCache({
         typePolicies: {
+            Query: {
+              fields: {
+                  country: {
+                      read: (existing, {toReference, args}) => {
+                          const countryRef = toReference({__typename: "Country", code: args.code})
+                          return existing ?? countryRef // Nullish Coalescing Operator (??)
+                      }
+                  }
+              }
+            },
             Country: {
                 keyFields: ['code'],
                 fields: {
